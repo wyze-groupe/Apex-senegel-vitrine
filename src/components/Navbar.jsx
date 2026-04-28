@@ -1,28 +1,36 @@
-import logoApex from "../assets/logo_APEX_black.png";
+import { useState } from "react";
+import logoApex from "../assets/logo_APEX_white.png";
 
-function Navbar() {
+export default function Navbar() {
+  const [open, setOpen] = useState(false);
+
   return (
     <header className="navbar">
-      <div className="container">
-        <a href="#home" className="logo-box">
-            <img src={logoApex} alt="Logo APEx" className="logo-img" />
-            <span className="logo-text">ACADÉMIE SENEGEL</span>
+      <div className="navbar-inner">
+
+        <a href="#home" className="navbar-logo">
+          <img src={logoApex} alt="APEx" className="real-logo" />
+          <span>ACADÉMIE SENEGEL</span>
         </a>
 
-        <nav>
+        <button
+          className="navbar-toggle"
+          onClick={() => setOpen(!open)}
+        >
+          ☰
+        </button>
+
+        <nav className={`navbar-links ${open ? "open" : ""}`}>
           <a href="#home">Accueil</a>
           <a href="#formations">Formations</a>
-          <a href="#pourquoi">Pourquoi</a>
+          <a href="#pourquoi">Pourquoi nous</a>
           <a href="#faq">FAQ</a>
-          <a href="#contact">Contact</a>
+          <a href="#contact" className="navbar-cta">
+            Je m’inscris
+          </a>
         </nav>
 
-        <a href="#contact" className="btn">
-          S'inscrire
-        </a>
       </div>
     </header>
   );
 }
-
-export default Navbar;
