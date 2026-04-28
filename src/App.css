@@ -346,112 +346,276 @@ width:100%;
 
 /* ================= FORMATIONS ================= */
 
+/* FORMATIONS - PREMIUM HERO STYLE */
 .formations {
-  background: var(--white);
+  background: linear-gradient(to bottom, #ffffff, #f7f2e9);
+}
+
+.formations .section-title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 3.4rem;
+  color: var(--green);
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .formations-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
+  gap: 42px;
+  margin-top: 54px;
 }
 
 .formation-card {
-  position: relative;
-  background: #fffdf9;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-xl);
-  padding: 32px;
-  box-shadow: var(--shadow-soft);
+  padding: 0;
   overflow: hidden;
+  border-radius: 34px;
+  background: #ffffff;
+  border: 1px solid rgba(13, 59, 46, 0.12);
+  box-shadow: 0 26px 55px rgba(13, 59, 46, 0.12);
+  transition: 0.35s ease;
+}
+
+.formation-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 34px 75px rgba(13, 59, 46, 0.18);
 }
 
 .formation-card::before {
+  display: none;
+}
+
+.formation-cover {
+  position: relative;
+  height: 260px;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+.formation-cover::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 9px;
-  height: 100%;
-  background: var(--gold);
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(13, 59, 46, 0.78), rgba(13, 59, 46, 0.18)),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.35));
+  z-index: 1;
 }
 
-.formation-card-highlight {
-  background: linear-gradient(to bottom, #fffdf8, #fff7df);
-  border: 2px solid rgba(245, 196, 0, 0.35);
+.formation-cover::after {
+  content: "ACADÉMIE SENEGEL";
+  position: absolute;
+  left: 28px;
+  bottom: 24px;
+  z-index: 2;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 2.2px;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
 }
 
+.formation-cover-web {
+  background-image: url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=85");
+}
+
+.formation-cover-business {
+  background-image: url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1400&q=85");
+}
 .formation-badge {
-  display: inline-block;
-  background: rgba(245, 196, 0, 0.14);
-  color: var(--green);
-  font-size: 0.82rem;
-  font-weight: 700;
-  padding: 8px 12px;
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  z-index: 3;
+  margin: 0;
+  padding: 10px 16px;
   border-radius: 999px;
-  margin-bottom: 16px;
+  background: var(--gold);
+  color: var(--green-dark);
+  font-size: 0.75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.24);
+}
+
+.formation-body {
+  padding: 36px;
 }
 
 .formation-card h3 {
   font-family: "Playfair Display", Georgia, serif;
-  font-size: 1.9rem;
+  font-size: 2.25rem;
+  line-height: 1.05;
   color: var(--green);
-  margin-bottom: 12px;
-  line-height: 1.15;
+  margin-bottom: 6px;
 }
 
-.formation-subtitle {
-  color: var(--text);
-  font-weight: 600;
-  line-height: 1.65;
+.formation-duration {
+  display: block;
+  font-family: "Playfair Display", Georgia, serif;
+  color: var(--gold-dark);
+  font-size: 1.55rem;
+  font-weight: 800;
   margin-bottom: 18px;
 }
 
-.formation-meta {
+.formation-subtitle {
   color: var(--muted);
-  line-height: 1.8;
-  margin-bottom: 10px;
+  font-weight: 500;
+  line-height: 1.75;
+  margin-bottom: 24px;
+}
+
+.formation-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 18px 0;
+  border-top: 1px solid #ebe3d8;
+  border-bottom: 1px solid #ebe3d8;
+  margin-bottom: 26px;
+}
+
+.formation-info span {
+  padding: 9px 13px;
+  border-radius: 999px;
+  background: #f3f0e8;
+  color: var(--green);
+  font-size: 0.86rem;
+  font-weight: 800;
 }
 
 .formation-block {
-  margin-top: 22px;
-  padding-top: 18px;
-  border-top: 1px solid #eee7dc;
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
 }
 
 .formation-block h4 {
-  color: var(--green);
+  color: var(--green-dark);
   font-size: 1rem;
-  margin-bottom: 10px;
+  margin-bottom: 13px;
+  font-weight: 800;
 }
 
-.formation-block ul {
-  padding-left: 18px;
+.formation-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-.formation-block li {
+.formation-tags span {
+  padding: 11px 14px;
+  border-radius: 12px;
+  background: rgba(27, 94, 59, 0.08);
+  color: var(--green);
+  font-size: 0.84rem;
+  font-weight: 800;
+}
+
+.formation-tags span:nth-child(2) {
+  background: rgba(245, 196, 0, 0.18);
+  color: #a66c00;
+}
+
+.formation-tags span:nth-child(3) {
+  background: rgba(13, 59, 46, 0.1);
+  color: var(--green-dark);
+}
+
+.formation-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 28px;
+}
+
+.formation-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 13px;
   color: var(--muted);
-  margin-bottom: 10px;
-  line-height: 1.75;
-  list-style: disc;
+  line-height: 1.65;
+}
+
+.formation-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 11px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+.formation-btn {
+  width: 100%;
+  margin-top: 24px;
+  padding: 17px 24px;
+  border-radius: 999px;
+  background: var(--green);
+  color: #ffffff;
+  font-weight: 900;
+  text-align: center;
+  transition: 0.28s ease;
+}
+
+.formation-btn:hover {
+  background: var(--green-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 18px 35px rgba(13, 59, 46, 0.22);
+}
+
+@media (max-width: 900px) {
+  .formations .section-title {
+    font-size: 2.45rem;
+  }
+
+  .formations-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .formation-cover {
+    height: 220px;
+  }
+}
+.formation-body {
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+}
+
+.formation-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 28px;
+  margin-bottom: 28px;
+}
+
+.formation-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 13px;
+  color: var(--muted);
+  line-height: 1.65;
 }
 
 .formation-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-top: 24px;
+  align-self: flex-start;
+  margin-top: 8px;
+  padding: 17px 24px;
+  border-radius: 999px;
   background: var(--green);
-  color: var(--white);
-  padding: 13px 18px;
-  border-radius: 12px;
-  font-weight: 700;
-  transition: 0.25s ease;
-}
-
-.formation-btn:hover {
-  background: var(--green-dark);
-  transform: translateY(-2px);
+  color: #ffffff;
+  font-weight: 900;
+  text-align: center;
+  transition: 0.28s ease;
 }
 
 /* ================= POURQUOI ================= */
