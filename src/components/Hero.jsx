@@ -1,11 +1,12 @@
+import heroImg from "../assets/faq/4.png";
+
 export default function Hero() {
   return (
     <section className="hero">
 
-  <div className="hero-bg">
-    <img
-src="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=1800&q=80"    />
-  </div>
+<div className="hero-bg">
+  <img src={heroImg} alt="Apex Académie Sénégal" />
+</div>
 
   <div className="hero-overlay"></div>
 
