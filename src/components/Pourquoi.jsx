@@ -1,54 +1,61 @@
+import { useEffect, useRef } from "react";
+
 function Pourquoi() {
+  const trackRef = useRef(null);
+
   const items = [
-    {
-      title: "Proximité",
-      text: "Des campus dans 5 villes du Sénégal. Pas besoin d'aller à Dakar.",
-    },
-    {
-      title: "100% pratique",
-      text: "Méthode Learning by Doing. Chaque semaine produit un livrable concret.",
-    },
-    {
-      title: "Stage garanti",
-      text: "1 mois chez WYZE Academy ou SENEGEL pour la formation 6 mois.",
-    },
-    {
-      title: "Outils gratuits",
-      text: "Figma, Canva, VS Code, GIMP et autres outils accessibles.",
-    },
-    {
-      title: "Boosté à l’IA",
-      text: "ChatGPT et Claude intégrés dans les formations modernes.",
-    },
-    {
-      title: "Diplôme reconnu",
-      text: "Certificat APEx + Open Badge numérique + portfolio réel.",
-    },
+    { number: "01", title: "Proximité", text: "Des campus dans 5 villes du Sénégal. Pas besoin d’aller à Dakar." },
+    { number: "02", title: "100% pratique", text: "Chaque semaine, vous réalisez un livrable concret." },
+    { number: "03", title: "Stage garanti", text: "Un mois de stage chez WYZE Academy ou SENEGEL." },
+    { number: "04", title: "Outils accessibles", text: "Figma, Canva, VS Code, GIMP et autres outils utiles." },
+    { number: "05", title: "Boosté à l’IA", text: "ChatGPT et Claude intégrés aux formations modernes." },
+    { number: "06", title: "Diplôme reconnu", text: "Certificat APEx, Open Badge numérique et portfolio réel." },
   ];
+
+  const loopItems = [...items, ...items, ...items];
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    let frame;
+    const speed = 0.5;
+
+    const animate = () => {
+      track.scrollLeft += speed;
+
+      const resetPoint = track.scrollWidth / 3;
+
+      if (track.scrollLeft >= resetPoint) {
+        track.scrollLeft -= resetPoint;
+      }
+
+      frame = requestAnimationFrame(animate);
+    };
+
+    frame = requestAnimationFrame(animate);
+
+    return () => cancelAnimationFrame(frame);
+  }, []);
 
   return (
     <section className="pourquoi section" id="pourquoi">
       <div className="container">
-        <p className="section-kicker">Pourquoi nous choisir</p>
+        <p className="section-kicker">Pourquoi nous</p>
 
-        <h2 className="section-title">
-          Une formation pensée pour réussir rapidement
-        </h2>
+        <h2 className="section-title">Pourquoi choisir ACADÉMIE SENEGEL ?</h2>
 
         <p className="section-description">
-          Une approche moderne, pratique et adaptée au marché africain.
+          Une approche moderne, pratique et pensée pour réussir rapidement.
         </p>
 
-        <div className="why-grid">
-          {items.map((item, index) => (
-            <div className="why-card" key={index}>
-              <span className="why-number">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-
+        <div className="why-carousel" ref={trackRef}>
+          {loopItems.map((item, index) => (
+            <article className="why-scroll-card" key={index}>
+              <span className="why-scroll-number">{item.number}</span>
               <h3>{item.title}</h3>
               <p>{item.text}</p>
-            </div>
+            </article>
           ))}
         </div>
       </div>
